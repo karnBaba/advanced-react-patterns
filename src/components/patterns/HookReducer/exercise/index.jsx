@@ -34,7 +34,7 @@ function useForm(props) {
   }, [state.values]);
 
   const handleChange = fieldName => event => {
-    event.persist();
+    event.preventDefault();
     dispatch({
       type: "SET_FIELD_VALUE",
       payload: { [fieldName]: event.target.value }

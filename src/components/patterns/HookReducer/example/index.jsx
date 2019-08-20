@@ -24,7 +24,6 @@ const LoginForm = props => {
 
   const handleChange = fieldName => event => {
     event.preventDefault();
-    event.persist();
     dispatch({
       type: SET_FIELD_VALUE,
       payload: { [fieldName]: event.target.value }
