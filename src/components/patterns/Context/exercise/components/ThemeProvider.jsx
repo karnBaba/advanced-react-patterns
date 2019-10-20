@@ -1,29 +1,27 @@
-import React from 'react'
-import themes from '../theme'
-import { ThemeProvider as StyledProvider } from 'styled-components'
+import React from "react";
+import themes from "../theme";
+import { ThemeProvider as StyledProvider } from "styled-components";
 
-export const ThemeContext = React.createContext({});
+const ThemeContext = React.createContext();
 
-class ThemeProvider extends React.Component {
-  state = {
-    theme: "light"
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = React.useState("dark");
+  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
+
+  return (
+    <ThemeContext.Provider value={{ toggleTheme }}>
+      <StyledProvider theme={themes[theme]}>{children}</StyledProvider>
+    </ThemeContext.Provider>
+  );
+};
+
+export const useTheme = () => {
+  const context = React.useContext(ThemeContext);
+  if (context === undefined) {
+    throw new Error("useTheme must be used within a ThemeProvider");
   }
 
-  handleThemeToggle = () => {
-    this.setState(prevState => ({theme: prevState.theme === 'light' ? 'dark' : 'light'}))
-  }
+  return context;
+};
 
-  render() {
-    const { theme } = this.state;
-    const { children } = this.props;
-    return (
-      <ThemeContext.Provider value={{theme, setValue: this.handleThemeToggle}}>
-        <StyledProvider theme={themes[theme]}>
-          {children}
-        </StyledProvider>
-      </ThemeContext.Provider>
-    )
-  }
-}
-
-export default ThemeProvider
+export default ThemeProvider;

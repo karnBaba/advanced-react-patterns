@@ -1,16 +1,16 @@
 import React from "react";
-import { ThemeContext } from "./ThemeProvider";
 import Button from "./Button";
 import Hero from "./Hero";
+import { useTheme } from "./ThemeProvider";
 
-const App = () => (
-  <ThemeContext.Consumer>
-    {({ setValue }) => (
-      <Hero>
-        <Button onClick={setValue}>Theme Switcher</Button>
-      </Hero>
-    )}
-  </ThemeContext.Consumer>
-);
+const App = () => {
+  const { toggleTheme } = useTheme();
+
+  return (
+    <Hero>
+      <Button onClick={toggleTheme}>Theme Switcher</Button>
+    </Hero>
+  );
+};
 
 export default App;

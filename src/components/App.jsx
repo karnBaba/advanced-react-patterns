@@ -14,9 +14,8 @@ import Menu from "./patterns/CompoundComponents/exercise/Menu";
 import CompositionPage from "./functional-programming/composition/Page";
 import ClosurePage from "./functional-programming/closure/Page";
 import StateReducerPage from "./patterns/StateReducer/Page";
-import Theming from './patterns/Theming/Page';
-import Variants from './patterns/Variants/Page'
-import Accordion from "./patterns/Context/exercise/components/Accordion";
+import Theming from "./patterns/Theming/Page";
+import Variants from "./patterns/Variants/Page";
 
 class App extends React.Component {
   constructor() {
@@ -80,17 +79,19 @@ class App extends React.Component {
               5. State Reducer
             </MenuItem>
             <hr />
-            <MenuItem link="/theming" toggleMenu={this.toggleMenu}>6. Theming</MenuItem>
-            <MenuItem link="/variants" toggleMenu={this.toggleMenu}>7. Variants</MenuItem>
+            <MenuItem link="/theming" toggleMenu={this.toggleMenu}>
+              6. Theming
+            </MenuItem>
+            <MenuItem link="/variants" toggleMenu={this.toggleMenu}>
+              7. Variants
+            </MenuItem>
             <hr />
             <MenuItem link="/compound-components" toggleMenu={this.toggleMenu}>
               8. Compound Components
             </MenuItem>
-            <Accordion>
-              <MenuItem link="/context" toggleMenu={this.toggleMenu}>
-                9. Context
-              </MenuItem>
-            </Accordion>
+            <MenuItem link="/context" toggleMenu={this.toggleMenu}>
+              9. Context
+            </MenuItem>
             <hr />
             <ul className="list-unstyled">
               <li>
